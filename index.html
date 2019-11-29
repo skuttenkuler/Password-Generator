@@ -15,25 +15,57 @@
         <div class="row" id="about">
             <div class="col-md-10 p-sm-1">
                 <div class="flex-shrink">
-                <p> content</p>              
+                <p>
+                    <script type="text/javascript">
+                        document.write(password)
+                    </script>
+                </p>              
               </div>                      
             </div>
         </div>
     </div>
     <!-- buttons for generate and copy -->
-    <button>Generate</button>
-    <button>Copy to Clipboard</button>
+    <div class="buttons">
+
+        <button onclick="generatePassword()">Generate</button>
+        <button>Copy to Clipboard</button>
+    </div>
 </body>
 <script>
 
     //set up function to begin after clicking generate button
-    //ask password length
-    //if password not >= 8  or <= 128 prompt must be in range restart
-    // comfirm if user wants special characters
-    // comfirm if user wants numeric characters
-    // comfirm if user wants lowercase characters
-    // comfirm if user wants uppercase characters
-    // function that takes in input recieved and generates password
+    function generatePassword() { 
+        var password = '';
+        var lowercase = 'abcdefghijklmnopqrstuvwxyz';
+        var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var numbers = '0123456789';
+        var special = '!"#$%&()*+,-./:;<=>?@[]^_`{|}~';
+        var allChar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#$%&()*+,-./:;<=>?@[]^_`{|}~'
+        //ask password length
+        var passwordLength = prompt("How long would you like your password to be?");
+        //if password not >= 8  or <= 128 prompt must be in range restart
+        
+        // comfirm if user wants special characters
+        var specialChar = confirm("Would you like to include special characters? ");
+        // comfirm if user wants numeric characters
+        var numChar = confirm("Would like to include numeric characters?");
+        // comfirm if user wants lowercase characters
+        var lowerChar = confirm("Would like to include lowercase characters?");
+        // comfirm if user wants uppercase characters
+        var upperChar = confirm("Would like to include uppercase characters?");
+        
+        // function that takes in input recieved and generates password
+        // if all selected create new string with all characters multiple by length
+        for (i = 0; i < passwordLength; i++){
+            if(specialChar,numChar,lowerChar,upperChar)
+            password = allChar.charAt(Math.floor(Math.random() * i)); 
+        } 
+        return password;
+        console.log(password);
+        
+    }
+        generatePassword();
+      
     // relay password to variable that shows up in container
     //function that copies passwor to clipboard after click copy button
 </script>

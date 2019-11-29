@@ -1,0 +1,8 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+button {
+    display: -ms-inline-flexbox;
+    align-content: center;
+}

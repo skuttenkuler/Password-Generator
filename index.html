@@ -34,7 +34,8 @@
 <script>
 
     //set up function to begin after clicking generate button
-    function generatePassword() { 
+    function generatePassword() {
+        var userPass = ''; 
         var password = '';
         var lowercase = 'abcdefghijklmnopqrstuvwxyz';
         var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -59,10 +60,10 @@
         for (i = 0; i < passwordLength; i++){
             if(specialChar,numChar,lowerChar,upperChar)
             password = allChar.charAt(Math.floor(Math.random() * i)); 
+            console.log(JSON.stringify(password));
         } 
-        return password;
-        console.log(password);
         
+        return password;
     }
         generatePassword();
       

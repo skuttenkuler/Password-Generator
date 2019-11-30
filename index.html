@@ -10,25 +10,26 @@
 </head>
 <body>
     <h1><strong>Password Generator</strong></h1>
+    <hr>
     <!-- container for generated password -->
-    <div class="container" id="about-container">
-        <div class="row" id="about">
-            <div class="col-md-10 p-sm-1">
-                <div class="flex-shrink">
+    <div class="container">
+        <div class="flex-shrink">
+            <h1>Generate A Password</h1>
+                <hr>
                 <p>
                     <script type="text/javascript">
-                        document.write(password)
+                        document.write(generatePassword());
                     </script>
-                </p>              
-              </div>                      
-            </div>
+                </p>
+                <hr>              
+                <!-- buttons for generate and copy -->
+                <div class="buttons">
+            
+                    <button onclick="generatePassword()" id="gen-button">Generate Password</button>
+                    <button onclick="copyPassword()" id="copy-button">Copy to Clipboard</button>
+                </div>
+              
         </div>
-    </div>
-    <!-- buttons for generate and copy -->
-    <div class="buttons">
-
-        <button onclick="generatePassword()">Generate</button>
-        <button>Copy to Clipboard</button>
     </div>
 </body>
 <script>

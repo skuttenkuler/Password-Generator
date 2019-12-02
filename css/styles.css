@@ -39,3 +39,7 @@ button {
     background-color: #af0607;
     color: #ffffff;
 }
+#displayPassword {
+    width: 100%;
+    height: 200px;
+}

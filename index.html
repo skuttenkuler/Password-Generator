@@ -33,20 +33,21 @@
 <script>
 
     //set up function to begin after clicking generate button
-    function generatePassword() {
-        var userPass = ''; 
+    const characters = {
+        lowercase: 'abcdefghijklmnopqrstuvwxyz',
+        uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        numbers: '0123456789',
+        special: '!"#$%&()*+,-./:;<=>?@[]^_`{|}~',
+        allChar: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#$%&()*+,-./:;<=>?@[]^_`{|}~',
+    },
+    function generatePassword() { 
         let password = '';
-        var lowercase = 'abcdefghijklmnopqrstuvwxyz';
-        var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        var numbers = '0123456789';
-        var special = '!"#$%&()*+,-./:;<=>?@[]^_`{|}~';
-        var allChar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#$%&()*+,-./:;<=>?@[]^_`{|}~'
         //ask password length
         let passwordLength = prompt("How long would you like your password to be?");
         //if password not >= 8  or <= 128 prompt must be in range restart
         
         // comfirm if user wants special characters
-         specialChar = confirm("Would you like to include special characters? ");
+         var specialChar = confirm("Would you like to include special characters? ");
         // comfirm if user wants numeric characters
         var numChar = confirm("Would like to include numeric characters?");
         // comfirm if user wants lowercase characters
@@ -54,18 +55,54 @@
         // comfirm if user wants uppercase characters
         var upperChar = confirm("Would like to include uppercase characters?");
         
+        const newArr = [specialChar, numChar, lowerChar, upperChar]
+        //filter true boolean from false
+        // only use true booleon  and element.join selected for new character string
+        function filter(newArr) {
+            return newArr.filter(false);
+        }
+        function selectedString()
+        
         // function that takes in input recieved and generates password
         // if all selected create new string with all characters multiple by length
-        for (i = 0; i < passwordLength; i++){
-            if(specialChar,numChar,lowerChar,upperChar)
-            password = password + allChar.charAt(Math.floor(Math.random() * passwordLength)); 
+        while(passwordLength >= 8 && passwordLength <= 126) {
+            for (i = 0; i < passwordLength; i++){
+                if(specialChar,numChar,lowerChar,upperChar) {
+                password += allChar.charAt(Math.floor(Math.random() * passwordLength)); 
+
+                }
+                else if(special) {
+                    password += special.charAt(Math.floor(Math.random() * passwordLength)); 
+                }
+                else if(numbers) {
+                    password += numbers.charAt(Math.floor(Math.random() * passwordLength)); 
+                }
+                else if(lowercase) {
+                    password += lowercase.charAt(Math.floor(Math.random() * passwordLength)); 
+                }
+                else if(uppercase) {
+                    password += uppercase.charAt(Math.floor(Math.random() * passwordLength)); 
+                }
+                else if(numChar,lowerChar,upperChar){
+                    let newCharString = numbers + lowercase + uppercase
+                    password += newCharString.charAt(Math.floor(Math.random() * passwordLength));
+                    console.log(newCharString)
+                }
+                else if(specialChar,lowerChar,upperChar){
+                    let newCharString = special + lowercase + uppercase
+                    password += newCharString.charAt(Math.floor(Math.random() * passwordLength));
+                }
+                else{
+                        return null;
+                }
             
             
+            }
+            document.getElementById("displayPassword").value = password 
+        
+        
         }
-        document.getElementById("displayPassword").value = password 
-        
-        
-    }
+}
         
     // relay password to variable that shows up in container
     //function that copies passwor to clipboard after click copy button

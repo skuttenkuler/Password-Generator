@@ -16,10 +16,8 @@
         <div class="flex-shrink">
             <h1>Generate A Password</h1>
                 <hr>
-                <p>
-                    <script type="text/javascript">
-                        document.write(generatePassword());
-                    </script>
+                <input type="text" id="displayPassword">
+
                 </p>
                 <hr>              
                 <!-- buttons for generate and copy -->
@@ -37,18 +35,18 @@
     //set up function to begin after clicking generate button
     function generatePassword() {
         var userPass = ''; 
-        var password = '';
+        let password = '';
         var lowercase = 'abcdefghijklmnopqrstuvwxyz';
         var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         var numbers = '0123456789';
         var special = '!"#$%&()*+,-./:;<=>?@[]^_`{|}~';
         var allChar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#$%&()*+,-./:;<=>?@[]^_`{|}~'
         //ask password length
-        var passwordLength = prompt("How long would you like your password to be?");
+        let passwordLength = prompt("How long would you like your password to be?");
         //if password not >= 8  or <= 128 prompt must be in range restart
         
         // comfirm if user wants special characters
-        var specialChar = confirm("Would you like to include special characters? ");
+         specialChar = confirm("Would you like to include special characters? ");
         // comfirm if user wants numeric characters
         var numChar = confirm("Would like to include numeric characters?");
         // comfirm if user wants lowercase characters
@@ -60,14 +58,15 @@
         // if all selected create new string with all characters multiple by length
         for (i = 0; i < passwordLength; i++){
             if(specialChar,numChar,lowerChar,upperChar)
-            password = allChar.charAt(Math.floor(Math.random() * i)); 
-            console.log(JSON.stringify(password));
-        } 
+            password = password + allChar.charAt(Math.floor(Math.random() * passwordLength)); 
+            
+            
+        }
+        document.getElementById("displayPassword").value = password 
         
-        return password;
+        
     }
-        generatePassword();
-      
+        
     // relay password to variable that shows up in container
     //function that copies passwor to clipboard after click copy button
 </script>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
     <title>Password Generator</title>
 </head>
 <body>
@@ -50,10 +50,11 @@
     };
     
     function generatePassword(lower, upper, number, special) { 
-        //check set boolean expectations
+        
         let password = '';
         //ask password length
         let passwordLength = prompt("How long would you like your password to be?");
+        //set password constraints
         while(passwordLength < 7 || passwordLength > 128) {
             passwordLength = prompt("Password must be at least 8 characters long and no more than 128.");
             
@@ -67,10 +68,10 @@
         var numChar = confirm("Would like to include numeric characters?");
         // comfirm if user wants special characters
         var specialChar = confirm("Would you like to include special characters? ");
-        //set up length constraints
-        //if password not >= 8  or <= 128 prompt must be in range restart
-        //set up array for true and false
+        
+        // set types and values for appending
         const typesChar = lower + upper + number + special; 
+        //set up array for true and false filter
         const typesArr = [{lowerChar}, {upperChar}, {numChar}, {specialChar}].filter(
             //filter true boolean from false
             type => Object.values(type)[0]
@@ -86,7 +87,7 @@
                 //console.log("charkey :" +charKey)
                 password += randomChar[charKey];
             });
-        console.log(password);
+        //console.log(password);
         }
                 
         document.getElementById("displayPassword").value = password 

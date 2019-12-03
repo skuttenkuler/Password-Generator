@@ -31,80 +31,69 @@
     </div>
 </body>
 <script>
+    //values of each selectable character and symbols
+    var lowercase = 'abcdefghijklmnopqrstuvwxyz';
+    var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var numbers = '0123456789';
+    var spec = '!"#$%&()*+,-./:;<=>?@[]^_`{|}~';
+    //set up element ID
+    const userPasswordEl = document.getElementById('userpasword');
+    
 
     //set up function to begin after clicking generate button
-    const characters = {
-        lowercase: 'abcdefghijklmnopqrstuvwxyz',
-        uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-        numbers: '0123456789',
-        special: '!"#$%&()*+,-./:;<=>?@[]^_`{|}~',
-        allChar: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#$%&()*+,-./:;<=>?@[]^_`{|}~',
-    },
-    function generatePassword() { 
+    //link randomCharacter function to returning values
+    const randomChar = {
+        lower: lowercase.charAt(Math.floor(Math.random() * lowercase.length)),
+        upper: uppercase.charAt(Math.floor(Math.random() * uppercase.length)),
+        number: numbers.charAt(Math.floor(Math.random() * numbers.length)),
+        special: spec.charAt(Math.floor(Math.random() * spec.length)),
+    };
+    
+    function generatePassword(lower, upper, number, special) { 
+        //check set boolean expectations
         let password = '';
         //ask password length
         let passwordLength = prompt("How long would you like your password to be?");
-        //if password not >= 8  or <= 128 prompt must be in range restart
-        
-        // comfirm if user wants special characters
-         var specialChar = confirm("Would you like to include special characters? ");
-        // comfirm if user wants numeric characters
-        var numChar = confirm("Would like to include numeric characters?");
+        while(passwordLength < 7 || passwordLength > 128) {
+            passwordLength = prompt("Password must be at least 8 characters long and no more than 128.");
+            
+            //console.log(passwordLength)
+        }
         // comfirm if user wants lowercase characters
         var lowerChar = confirm("Would like to include lowercase characters?");
         // comfirm if user wants uppercase characters
         var upperChar = confirm("Would like to include uppercase characters?");
-        
-        const newArr = [specialChar, numChar, lowerChar, upperChar]
-        //filter true boolean from false
-        // only use true booleon  and element.join selected for new character string
-        function filter(newArr) {
-            return newArr.filter(false);
+        // comfirm if user wants numeric characters
+        var numChar = confirm("Would like to include numeric characters?");
+        // comfirm if user wants special characters
+        var specialChar = confirm("Would you like to include special characters? ");
+        //set up length constraints
+        //if password not >= 8  or <= 128 prompt must be in range restart
+        //set up array for true and false
+        const typesChar = lower + upper + number + special; 
+        const typesArr = [{lowerChar}, {upperChar}, {numChar}, {specialChar}].filter(
+            //filter true boolean from false
+            type => Object.values(type)[0]
+        );
+        //check if no types were selected
+        if(typesChar === 0) {
+            alert("Must select at least one type of character!")
         }
-        function selectedString()
-        
-        // function that takes in input recieved and generates password
-        // if all selected create new string with all characters multiple by length
-        while(passwordLength >= 8 && passwordLength <= 126) {
-            for (i = 0; i < passwordLength; i++){
-                if(specialChar,numChar,lowerChar,upperChar) {
-                password += allChar.charAt(Math.floor(Math.random() * passwordLength)); 
-
-                }
-                else if(special) {
-                    password += special.charAt(Math.floor(Math.random() * passwordLength)); 
-                }
-                else if(numbers) {
-                    password += numbers.charAt(Math.floor(Math.random() * passwordLength)); 
-                }
-                else if(lowercase) {
-                    password += lowercase.charAt(Math.floor(Math.random() * passwordLength)); 
-                }
-                else if(uppercase) {
-                    password += uppercase.charAt(Math.floor(Math.random() * passwordLength)); 
-                }
-                else if(numChar,lowerChar,upperChar){
-                    let newCharString = numbers + lowercase + uppercase
-                    password += newCharString.charAt(Math.floor(Math.random() * passwordLength));
-                    console.log(newCharString)
-                }
-                else if(specialChar,lowerChar,upperChar){
-                    let newCharString = special + lowercase + uppercase
-                    password += newCharString.charAt(Math.floor(Math.random() * passwordLength));
-                }
-                else{
-                        return null;
-                }
-            
-            
-            }
-            document.getElementById("displayPassword").value = password 
-        
-        
+        //loop through the types and pull random character from each type
+        for(var i = 0; i < passwordLength; i + typesChar){
+            typesArr.forEach(type => {
+                const charKey = Object.keys(type)[0];
+                //console.log("charkey :" +charKey)
+                password += randomChar[charKey];
+            });
+        console.log(password);
         }
-}
-        
-    // relay password to variable that shows up in container
+                
+        document.getElementById("displayPassword").value = password 
+        }  
+        generatePassword();
+    
     //function that copies passwor to clipboard after click copy button
-</script>
+    </script>
 </html>
+

@@ -56,10 +56,15 @@ form{
     width: 100%;
     height: 200px;
 }
+
+#l-input{
+    margin-right: 20px;
+    font-size: 25px;
+}
 /* lower checkbox */
 #l-button {
     margin:4px;
-    background-color:#EFEFEF;
+    background-color:#bfc7ce;
     border-radius:4px;
     border:1px solid #D0D0D0;
     overflow:auto;
@@ -97,7 +102,7 @@ form{
 /* upper checkbox */
 #u-button {
     margin:4px;
-    background-color:#EFEFEF;
+    background-color:#bfc7ce;
     border-radius:4px;
     border:1px solid #D0D0D0;
     overflow:auto;
@@ -135,7 +140,7 @@ form{
 /* number checkbox */
 #n-button {
     margin:4px;
-    background-color:#EFEFEF;
+    background-color:#bfc7ce;
     border-radius:4px;
     border:1px solid #D0D0D0;
     overflow:auto;
@@ -173,7 +178,7 @@ form{
 /* Symbols checkbox */
 #s-button {
     margin:4px;
-    background-color:#EFEFEF;
+    background-color:#bfc7ce;
     border-radius:4px;
     border:1px solid #D0D0D0;
     overflow:auto;

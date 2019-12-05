@@ -5,6 +5,23 @@ const uppercaseEl = document.querySelector('#uppercase');
 const numbersEl = document.querySelector('#numbers');
 const symbolsEl = document.querySelector('#symbols');
     
+// functions generate random with return strings of browser characters sets
+function getRandomLower() {
+    return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+}
+        
+function getRandomUpper() {
+    return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+}
+        
+function getRandomNumber() {
+    return String.fromCharCode(Math.floor(Math.random() * 10) + 48);        
+}
+        
+function getRandomSymbol() {
+    const symbols = ' !"#$%&()*+,-./:;<=>?@[]^_`{|}~'
+    return symbols[Math.floor(Math.random() * symbols.length)];
+}
     
 //set array with keys to each getRandom functions
     const randomChar = {
@@ -58,24 +75,7 @@ generateButton.addEventListener('click', () => {
             
             }  
             
-//generate random functions with return strings of browser characters sets
-function getRandomLower() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-}
-        
-function getRandomUpper() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-}
-        
-function getRandomNumber() {
-    return String.fromCharCode(Math.floor(Math.random() * 10) + 48);        
-}
-        
-function getRandomSymbol() {
-    const symbols = ' !"#$%&()*+,-./:;<=>?@[]^_`{|}~'
-    return symbols[Math.floor(Math.random() * symbols.length)];
-}
-    
+
     //function that copies passwor to clipboard after click copy button
 copyButton.addEventListener('click', () => {
     //set new variable and create new element

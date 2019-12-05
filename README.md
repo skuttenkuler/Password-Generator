@@ -17,5 +17,5 @@ Javascript Random Password Generator for Berkley Bootcamp
 ![Alt text](./assets/images/screen3.png?raw=true "Optional Title")
 # Author
 - Sam Kuttenkuler
-    - [Github](www.github.com/skuttenkuler)
-    - [LinkedIn](www.linkedin.com/in/skdev91)
+    - [Github](https://www.github.com/skuttenkuler)
+    - [LinkedIn](https://www.linkedin.com/in/skdev91)

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/styles.css">
+    
     <title>Password Generator</title>
 </head>
 <body>
@@ -15,86 +16,49 @@
     <div class="container">
         <div class="flex-shrink">
             <h1>Generate A Password</h1>
+            <div class="password-parameters">
+                <form>
+                    <label>Password Length</label>
+                        <input type="number" id="passwordLength" min="8" max="128" value="8"/>
+                        <div>
+                            <label>
+                                <input type="checkbox" id="lowercase" checked><span>Lowercase</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" id="uppercase" checked/><span>Uppercase</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" id="numbers" checked/><span>Numbers</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" id="symbols" checked/><span>Symbols</span>
+                            </label>
+                        </div>
+                    
+                </form>
+            </div>
+                
                 <hr>
-                <input type="text" id="displayPassword">
-
-                </p>
+                <div class="userPass-container">
+                    <span id="userPass"></span>
+                </div>
                 <hr>              
                 <!-- buttons for generate and copy -->
                 <div class="buttons">
             
-                    <button onclick="generatePassword()" id="gen-button">Generate Password</button>
+                    <button id="generateButton">Generate Password</button>
                     <button onclick="copyPassword()" id="copy-button">Copy to Clipboard</button>
                 </div>
               
         </div>
     </div>
+    <script src="./assets/js/script.js"></script>
 </body>
-<script>
-    //values of each selectable character and symbols
-    var lowercase = 'abcdefghijklmnopqrstuvwxyz';
-    var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    var numbers = '0123456789';
-    var spec = '!"#$%&()*+,-./:;<=>?@[]^_`{|}~';
-    //set up element ID
-    const userPasswordEl = document.getElementById('userpasword');
-    
 
-    //set up function to begin after clicking generate button
-    //link randomCharacter function to returning values
-    const randomChar = {
-        lower: lowercase.charAt(Math.floor(Math.random() * lowercase.length)),
-        upper: uppercase.charAt(Math.floor(Math.random() * uppercase.length)),
-        number: numbers.charAt(Math.floor(Math.random() * numbers.length)),
-        special: spec.charAt(Math.floor(Math.random() * spec.length)),
-    };
-    
-    function generatePassword(lower, upper, number, special) { 
-        
-        let password = '';
-        //ask password length
-        let passwordLength = prompt("How long would you like your password to be?");
-        //set password constraints
-        while(passwordLength < 7 || passwordLength > 128) {
-            passwordLength = prompt("Password must be at least 8 characters long and no more than 128.");
-            
-            //console.log(passwordLength)
-        }
-        // comfirm if user wants lowercase characters
-        var lowerChar = confirm("Would like to include lowercase characters?");
-        // comfirm if user wants uppercase characters
-        var upperChar = confirm("Would like to include uppercase characters?");
-        // comfirm if user wants numeric characters
-        var numChar = confirm("Would like to include numeric characters?");
-        // comfirm if user wants special characters
-        var specialChar = confirm("Would you like to include special characters? ");
-        
-        // set types and values for appending
-        const typesChar = lower + upper + number + special; 
-        //set up array for true and false filter
-        const typesArr = [{lowerChar}, {upperChar}, {numChar}, {specialChar}].filter(
-            //filter true boolean from false
-            type => Object.values(type)[0]
-        );
-        //check if no types were selected
-        if(typesChar === 0) {
-            alert("Must select at least one type of character!")
-        }
-        //loop through the types and pull random character from each type
-        for(var i = 0; i < passwordLength; i + typesChar){
-            typesArr.forEach(type => {
-                const charKey = Object.keys(type)[0];
-                //console.log("charkey :" +charKey)
-                password += randomChar[charKey];
-            });
-        //console.log(password);
-        }
-                
-        document.getElementById("displayPassword").value = password 
-        }  
-        generatePassword();
-    
-    //function that copies passwor to clipboard after click copy button
-    </script>
 </html>
-

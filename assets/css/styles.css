@@ -10,6 +10,7 @@ button {
     align-content: center;
     border-radius: 25px;
 }
+
 .container {
     background: #ffffff;
     border: 2px dashed #bfc7ce;
@@ -30,12 +31,24 @@ button {
     justify-content: center;
     font-size: 50px;
 }
+.userPass-container{
+    width: 826px;
+    height: 150px;
+}
+form{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    padding:10px;
+    
+}
 #copy-button{
     margin-left:40px;
     background-color: #bfc7ce;
     color: #ffffff;
 }
-#gen-button{
+#generateButton{
     background-color: #af0607;
     color: #ffffff;
 }

@@ -77,3 +77,20 @@ function getRandomSymbol() {
 }
     
     //function that copies passwor to clipboard after click copy button
+copyButton.addEventListener('click', () => {
+    //set new variable and create new element
+    const textarea = document.createElement("textarea");
+    const copiedPass = userPassEl.innerText;
+    //point password value to new element
+    textarea.value = copiedPass;
+    //add value to element
+    document.body.appendChild(textarea);
+    //select the element
+    textarea.select();
+    //copy element
+    document.execCommand('copy');
+    // remove the text area
+    textarea.remove();
+    //alert copy happened
+    alert("Password copied");
+});
